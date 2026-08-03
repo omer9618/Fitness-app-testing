@@ -1,6 +1,6 @@
-# SalamaPath - QA Bug Report
+# FitnessApp - QA Bug Report
 
-**Application:** SalamaPath (Fitness & Wellness Mobile App)  
+**Application:** FitnessApp (Fitness & Wellness Mobile App)  
 **Testing Mode:** Exploratory Manual Testing  
 **Environment:** Android Mobile  
 **Date:** August 3, 2026  

@@ -1,6 +1,6 @@
-# SalamaPath - Feature Suggestions & Enhancements
+# FitnessApp - Feature Suggestions & Enhancements
 
-**Application:** SalamaPath (Fitness & Wellness Mobile App)  
+**Application:** FitnessApp (Fitness & Wellness Mobile App)  
 **Date:** August 3, 2026  
 **Module Focus:** Fasting & Islamic Wellness Tools  
 
