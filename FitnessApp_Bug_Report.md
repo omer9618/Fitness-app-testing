@@ -4,7 +4,7 @@
 **Testing Mode:** Exploratory Manual Testing  
 **Environment:** Android Mobile  
 **Date:** August 3, 2026  
-**Total Bugs Logged:** 22  
+**Total Bugs Logged:** 29  
 
 ---
 
@@ -34,3 +34,10 @@
 | **BUG-20** | QuickFit / Modal | **Missing Empty-State Handling:** Opening categories with zero available exercises (**Abdominals**, **Neck**, **back**) renders a completely blank modal sheet without feedback or loader graphics. | **Medium** | Add fallback UI graphic/message (*"No exercises found for this target zone"*). |
 | **BUG-21** | QuickFit / Modal Header | **Unsanitized String Interpolation in Headers:** Dynamic modal titles append `" Categories"` to raw string variables without validation, producing grammatically broken headers (e.g., `back Categories`). | **Low** | Normalize string headers before appending template literals (`${capitalize(category)} Categories`). |
 | **BUG-22** | QuickFit / Data Integrity | **Missing Subcategory Deduplication / Array Overlap:** Selecting overlapping body zones (e.g., `Lower Body` vs `Legs`) returns duplicate subcategories (like `Hamstrings`) rather than pulling from a single-source normalized taxonomy. | **High** | Implement array deduplication logic (`Array.from(new Set(...))`) across taxonomy endpoints. |
+| **BUG-23** | Community Feed | **Uncontrolled Inline Card Expansion:** Expanding long post text pushes feed content down indefinitely without applying max-height constraints, internal overflow scrollbars, or a collapse control. | **High** | Implement max-height limits on expanded cards or open long posts in a separate detail view modal. |
+| **BUG-24** | Community Feed | **False Expansion Button Trigger:** The `more` action trigger renders unconditionally on short posts (e.g., 3-word posts like `Post with images🌍`) where text is not truncated. | **Medium** | Add conditional check (`text.length > MAX_CHAR || lines > 3`) before rendering the expand trigger. |
+| **BUG-25** | Community Feed | **Non-Standard Copy & Missing Collapse Toggle:** Expand action uses lowercase copy (`more`) instead of standard `See More`, and fails to toggle to `See Less` / `Show Less` when expanded. | **Low** | Standardize UI copy to `See More` / `See Less` and toggle the state onClick. |
+| **BUG-26** | Community Feed & Post Creation | **Low-Resolution / Pixelated Icon Assets:** Action buttons and attachment icons (e.g., post media upload button) use low-density raster assets, rendering pixelated on high-DPI screens. | **Low** | Replace PNG/JPG icons with vector-based SVGs or high-density `@3x` / `xxhdpi` bitmap assets. |
+| **BUG-27** | Community / Creation Flow | **Inconsistent Terminology Across Flow (Squad vs Community):** Copy toggles arbitrarily between "Squad" and "Community" across headers, inputs, empty states, and modal dialogs. | **Low** | Standardize copy tokens across the app (choose either "Squad" or "Community" globally). |
+| **BUG-28** | Community / Creation Flow | **Incorrect Navigation Stack Route After Creation:** Selecting "No" on the post-creation modal routes the user directly to the Home Dashboard instead of pushing the newly created Community feed. | **High** | Replace route stack reset with direct navigation to `CommunityDetailView(communityId)`. |
+| **BUG-29** | Community / Feed View | **Unstyled / Generic Empty State (`No Data Found`):** Newly created empty communities display unstyled raw text (`No Data Found`) without a user-friendly illustration or prompt to post. | **Low** | Replace with a styled empty-state component containing an onboarding prompt (*"No posts yet. Start the conversation!"*). |
