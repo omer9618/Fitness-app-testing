@@ -4,7 +4,7 @@
 **Testing Mode:** Exploratory Manual Testing  
 **Environment:** Android Mobile  
 **Date:** August 3, 2026  
-**Total Bugs Logged:** 45  
+**Total Bugs Logged:** 49  
 
 ---
 
@@ -57,3 +57,7 @@
 | **BUG-43** | Daily Power Minutes | **Exposed `unknown status` Fallback & Infinite Loading:** Submitting the empty "Fill Information" form triggers a spinner displaying raw API fallback text (`unknown status`) without error handling. | **High** | Implement form validation before submission and add proper user-friendly error dialogs for API failures. |
 | **BUG-44** | Daily Power Minutes | **Broken Navigation Loop / Aborted Feature Flow:** Failing the "Fill Information" request drops the user back onto the Home Dashboard, preventing access to the Power Minutes feature. | **High** | Prevent routing resets on API failure and keep the user on an actionable retry state. |
 | **BUG-45** | Home Dashboard | **Header View Clipping Status Bar:** Returning from the Power Minutes flow pushes the top profile header off-screen, clipping the user avatar into the system status bar. | **Medium** | Wrap the top header bar of `HomeView` in a `SafeArea` widget to maintain top padding constraints. |
+| **BUG-46** | Sign-Up Flow | **Form Fields Obscured by Soft Keyboard (Missing Bottom Inset Padding):** Focusing on the Password and Confirm Password text fields causes the soft keyboard to completely cover the focused input fields and the submit button without auto-scrolling into view. | **High** | Wrap the Sign-Up form in a `SingleChildScrollView` and enable `resizeToAvoidBottomInset: true` on the Scaffold. |
+| **BUG-47** | Sign-Up Flow | **Missing Input Length & Format Validation (Phone Number):** Mobile number input accepts arbitrary digit lengths (e.g., 18 digits: `0316111998488454`) without enforcing localized 11-digit phone number formatting or regex validation. | **High** | Apply regex validator (`r'^((\+92)|(03))\d{9}$'`) and enforce `maxLength: 11` on the text field. |
+| **BUG-48** | Sign-Up Flow | **Missing Password Complexity Enforcement:** Password fields accept weak, simple strings (e.g., `Oli_sykes`) without enforcing minimum security policy standards (uppercase, special char, digit, min 8 chars). | **High** | Implement strict password complexity regex validation on both client form state and backend DTOs. |
+| **BUG-49** | Auth / OTP Verification | **Failing OTP Delivery Service:** Advancing past the registration form routes to the `Verify` screen, but the backend fails to trigger or deliver the verification passcode email/SMS to the user. | **Critical** | Fix backend email/SMS gateway configuration (`SMTP` / `Twilio` / `Firebase Auth`) on the `send-otp` controller. |

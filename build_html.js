@@ -205,7 +205,7 @@ const htmlContent = `
     </script>
 </body>
 </html>
-\`;
+`;
 
 fs.writeFileSync('C:/Users/Admin/Desktop/Salamapath/qa_report.html', htmlContent);
 console.log('Successfully generated qa_report.html');
