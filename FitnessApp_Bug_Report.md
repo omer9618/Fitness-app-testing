@@ -4,7 +4,7 @@
 **Testing Mode:** Exploratory Manual Testing  
 **Environment:** Android Mobile  
 **Date:** August 3, 2026  
-**Total Bugs Logged:** 49  
+**Total Bugs Logged:** 50  
 
 ---
 
@@ -61,3 +61,4 @@
 | **BUG-47** | Sign-Up Flow | **Missing Input Length & Format Validation (Phone Number):** Mobile number input accepts arbitrary digit lengths (e.g., 18 digits: `0316111998488454`) without enforcing localized 11-digit phone number formatting or regex validation. | **High** | Apply regex validator (`r'^((\+92)|(03))\d{9}$'`) and enforce `maxLength: 11` on the text field. |
 | **BUG-48** | Sign-Up Flow | **Missing Password Complexity Enforcement:** Password fields accept weak, simple strings (e.g., `Oli_sykes`) without enforcing minimum security policy standards (uppercase, special char, digit, min 8 chars). | **High** | Implement strict password complexity regex validation on both client form state and backend DTOs. |
 | **BUG-49** | Auth / OTP Verification | **Failing OTP Delivery Service:** Advancing past the registration form routes to the `Verify` screen, but the backend fails to trigger or deliver the verification passcode email/SMS to the user. | **Critical** | Fix backend email/SMS gateway configuration (`SMTP` / `Twilio` / `Firebase Auth`) on the `send-otp` controller. |
+| **BUG-50** | Sign-Up Flow | **Missing "Password Match" Validation Feedback:** The form provides no real-time or submission-time visual feedback to inform the user whether the "Password" and "Confirm Password" fields match. | **Medium** | Implement a client-side validator to check equality between the two password fields and display an inline error message when mismatched. |
