@@ -4,7 +4,7 @@
 **Testing Mode:** Exploratory Manual Testing  
 **Environment:** Android Mobile  
 **Date:** August 3, 2026  
-**Total Bugs Logged:** 50  
+**Total Bugs Logged:** 51  
 
 ---
 
@@ -62,3 +62,4 @@
 | **BUG-48** | Sign-Up Flow | **Missing Password Complexity Enforcement:** Password fields accept weak, simple strings (e.g., `Oli_sykes`) without enforcing minimum security policy standards (uppercase, special char, digit, min 8 chars). | **High** | Implement strict password complexity regex validation on both client form state and backend DTOs. |
 | **BUG-49** | Auth / OTP Verification | **Failing OTP Delivery Service:** Advancing past the registration form routes to the `Verify` screen, but the backend fails to trigger or deliver the verification passcode email/SMS to the user. | **Critical** | Fix backend email/SMS gateway configuration (`SMTP` / `Twilio` / `Firebase Auth`) on the `send-otp` controller. |
 | **BUG-50** | Sign-Up Flow | **Missing "Password Match" Validation Feedback:** The form provides no real-time or submission-time visual feedback to inform the user whether the "Password" and "Confirm Password" fields match. | **Medium** | Implement a client-side validator to check equality between the two password fields and display an inline error message when mismatched. |
+| **BUG-51** | Auth / Backend Registration | **Premature Database Insertion Prior to OTP Verification:** Submitting step 1 of registration instantly creates a user record in the DB (logged in Admin Portal as `New Lead`) before OTP/email verification is completed. | **Critical** | Store pending registrations in Redis/temp storage and only execute database insert after `verify-otp` passes. |
