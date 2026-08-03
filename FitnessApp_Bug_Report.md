@@ -4,7 +4,7 @@
 **Testing Mode:** Exploratory Manual Testing  
 **Environment:** Android Mobile  
 **Date:** August 3, 2026  
-**Total Bugs Logged:** 51  
+**Total Bugs Logged:** 54  
 
 ---
 
@@ -63,3 +63,6 @@
 | **BUG-49** | Auth / OTP Verification | **Failing OTP Delivery Service:** Advancing past the registration form routes to the `Verify` screen, but the backend fails to trigger or deliver the verification passcode email/SMS to the user. | **Critical** | Fix backend email/SMS gateway configuration (`SMTP` / `Twilio` / `Firebase Auth`) on the `send-otp` controller. |
 | **BUG-50** | Sign-Up Flow | **Missing "Password Match" Validation Feedback:** The form provides no real-time or submission-time visual feedback to inform the user whether the "Password" and "Confirm Password" fields match. | **Medium** | Implement a client-side validator to check equality between the two password fields and display an inline error message when mismatched. |
 | **BUG-51** | Auth / Backend Registration | **Premature Database Insertion Prior to OTP Verification:** Submitting step 1 of registration instantly creates a user record in the DB (logged in Admin Portal as `New Lead`) before OTP/email verification is completed. | **Critical** | Store pending registrations in Redis/temp storage and only execute database insert after `verify-otp` passes. |
+| **BUG-52** | Onboarding Flow | **UI Component Collision on Selected Chip (Fitness Goal Field):** Populating a goal selection chip renders a dark pill tag that directly overlaps the trailing dropdown arrow icon on the right side of the container. | **Medium** | Apply `Padding(right: 32.0)` or wrap the selected chip container in an `Expanded` flex widget to keep it clear of the dropdown arrow. |
+| **BUG-53** | Onboarding Flow | **Inconsistent Modal Selection UI Patterns:** The Fitness Goal selection modal uses auto-closing chip taps, whereas Preferred Days and Duration modals use a completely different layout with explicit "Done" confirmation buttons. | **Low** | Standardize onboarding bottom sheet selection widgets to use a unified, reusable `SelectionBottomSheet` component. |
+| **BUG-54** | Onboarding Flow | **Inconsistent String Hyphenation (Duration Options):** Duration labels render with unnatural hyphens (e.g., `45-Minutes`, `7-Minutes`) unlike other onboarding selection values (`5 Days`). | **Low** | Standardize option string formatting helpers across onboarding mock data/API endpoints. |
