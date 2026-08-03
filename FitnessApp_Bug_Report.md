@@ -4,7 +4,7 @@
 **Testing Mode:** Exploratory Manual Testing  
 **Environment:** Android Mobile  
 **Date:** August 3, 2026  
-**Total Bugs Logged:** 54  
+**Total Bugs Logged:** 56  
 
 ---
 
@@ -66,3 +66,5 @@
 | **BUG-52** | Onboarding Flow | **UI Component Collision on Selected Chip (Fitness Goal Field):** Populating a goal selection chip renders a dark pill tag that directly overlaps the trailing dropdown arrow icon on the right side of the container. | **Medium** | Apply `Padding(right: 32.0)` or wrap the selected chip container in an `Expanded` flex widget to keep it clear of the dropdown arrow. |
 | **BUG-53** | Onboarding Flow | **Inconsistent Modal Selection UI Patterns:** The Fitness Goal selection modal uses auto-closing chip taps, whereas Preferred Days and Duration modals use a completely different layout with explicit "Done" confirmation buttons. | **Low** | Standardize onboarding bottom sheet selection widgets to use a unified, reusable `SelectionBottomSheet` component. |
 | **BUG-54** | Onboarding Flow | **Inconsistent String Hyphenation (Duration Options):** Duration labels render with unnatural hyphens (e.g., `45-Minutes`, `7-Minutes`) unlike other onboarding selection values (`5 Days`). | **Low** | Standardize option string formatting helpers across onboarding mock data/API endpoints. |
+| **BUG-55** | Admin Panel / Customer Profile | **Duplicate Phone Number Rendering:** The customer's mobile number is rendered twice in consecutive rows inside the contact info card. | **Low** | Remove duplicate field binding in the `CustomerProfileView` template. |
+| **BUG-56** | Admin Panel / Customer Profile | **Contradictory Customer Status Badges:** The profile header displays a `Registered` badge while the field below shows `Lead Status: New Lead`. | **Medium** | Sync state handlers so `Lead Status` reflects `Registered` / `Converted` once user registration completes. |
