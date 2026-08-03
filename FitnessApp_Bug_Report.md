@@ -4,7 +4,7 @@
 **Testing Mode:** Exploratory Manual Testing  
 **Environment:** Android Mobile  
 **Date:** August 3, 2026  
-**Total Bugs Logged:** 29  
+**Total Bugs Logged:** 32  
 
 ---
 
@@ -41,3 +41,6 @@
 | **BUG-27** | Community / Creation Flow | **Inconsistent Terminology Across Flow (Squad vs Community):** Copy toggles arbitrarily between "Squad" and "Community" across headers, inputs, empty states, and modal dialogs. | **Low** | Standardize copy tokens across the app (choose either "Squad" or "Community" globally). |
 | **BUG-28** | Community / Creation Flow | **Incorrect Navigation Stack Route After Creation:** Selecting "No" on the post-creation modal routes the user directly to the Home Dashboard instead of pushing the newly created Community feed. | **High** | Replace route stack reset with direct navigation to `CommunityDetailView(communityId)`. |
 | **BUG-29** | Community / Feed View | **Unstyled / Generic Empty State (`No Data Found`):** Newly created empty communities display unstyled raw text (`No Data Found`) without a user-friendly illustration or prompt to post. | **Low** | Replace with a styled empty-state component containing an onboarding prompt (*"No posts yet. Start the conversation!"*). |
+| **BUG-30** | Workout Hub | **Non-Functional Action Icons (Dead UI Controls):** Two out of the three action icons on the active plan card (Swap/Transfer and Scan) are completely un-clickable/unresponsive, with only the middle edit icon being functional. | **High** | Wire up proper click handlers to active routes or remove un-implemented icons from the UI. |
+| **BUG-31** | Workout Hub | **Dead-End Active Plan Validation Modal:** The warning modal instructs users to *"Please deactivate it first"*, but offers only an `"Okay"` button without providing a direct deactivation action or navigating to deactivation settings. | **Medium** | Replace the passive "Okay" dialog with an actionable modal containing a direct `"Deactivate Current Plan"` button or link. |
+| **BUG-32** | Workout Hub | **Low-Density / Pixelated Plan Action Icons:** The action icons inside the active plan card (swap, edit, scan) suffer from severe pixelation on high-DPI screens due to low-resolution bitmap rendering. | **Low** | Replace raster PNG icons with SVG vectors or resolution-independent vector drawables. |
