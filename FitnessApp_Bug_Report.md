@@ -4,7 +4,7 @@
 **Testing Mode:** Exploratory Manual Testing  
 **Environment:** Android Mobile  
 **Date:** August 3, 2026  
-**Total Bugs Logged:** 41  
+**Total Bugs Logged:** 45  
 
 ---
 
@@ -53,3 +53,7 @@
 | **BUG-39** | Profile / Change Password | **Unresponsive View & Back Navigation Lock:** Tapping "Change Password" fails to load the form and breaks back button navigation (`<`), locking the user on the screen. | **High** | Fix unhandled route exception in `ChangePasswordView` and ensure back button handler is wrapped in `WillPopScope` / `PopScope`. |
 | **BUG-40** | Notification Settings | **Horizontally Stretched UI Toggle Switches:** Toggle switches across all notification items render stretched and visually distorted due to unconstrained flex layout bounds. | **Low** | Wrap switch widgets in fixed-width containers (`width: 48.0`, `height: 28.0`) to preserve native switch aspect ratio. |
 | **BUG-41** | Subscriptions View | **Missing SafeArea Padding on Sticky Header:** Scrolling down the subscription list pushes header text ("Current Plan") directly into the system status bar, obscuring the back navigation arrow. | **Medium** | Wrap subscription header view scaffold in a `SafeArea` widget to prevent status bar layout overlap. |
+| **BUG-42** | Daily Power Minutes | **Blank Form Scaffold (`Fill Information` Screen):** Opening "Your Daily Power Minutes" loads a screen titled "Fill Information" with a functional "Next" button but zero form fields or inputs. | **High** | Wire proper form field components/controllers to the `FillInformation` view scaffold. |
+| **BUG-43** | Daily Power Minutes | **Exposed `unknown status` Fallback & Infinite Loading:** Submitting the empty "Fill Information" form triggers a spinner displaying raw API fallback text (`unknown status`) without error handling. | **High** | Implement form validation before submission and add proper user-friendly error dialogs for API failures. |
+| **BUG-44** | Daily Power Minutes | **Broken Navigation Loop / Aborted Feature Flow:** Failing the "Fill Information" request drops the user back onto the Home Dashboard, preventing access to the Power Minutes feature. | **High** | Prevent routing resets on API failure and keep the user on an actionable retry state. |
+| **BUG-45** | Home Dashboard | **Header View Clipping Status Bar:** Returning from the Power Minutes flow pushes the top profile header off-screen, clipping the user avatar into the system status bar. | **Medium** | Wrap the top header bar of `HomeView` in a `SafeArea` widget to maintain top padding constraints. |
