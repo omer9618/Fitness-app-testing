@@ -4,7 +4,7 @@
 **Testing Mode:** Exploratory Manual Testing  
 **Environment:** Android Mobile  
 **Date:** August 3, 2026  
-**Total Bugs Logged:** 56  
+**Total Bugs Logged:** 60  
 
 ---
 
@@ -68,3 +68,7 @@
 | **BUG-54** | Onboarding Flow | **Inconsistent String Hyphenation (Duration Options):** Duration labels render with unnatural hyphens (e.g., `45-Minutes`, `7-Minutes`) unlike other onboarding selection values (`5 Days`). | **Low** | Standardize option string formatting helpers across onboarding mock data/API endpoints. |
 | **BUG-55** | Admin Panel / Customer Profile | **Duplicate Phone Number Rendering:** The customer's mobile number is rendered twice in consecutive rows inside the contact info card. | **Low** | Remove duplicate field binding in the `CustomerProfileView` template. |
 | **BUG-56** | Admin Panel / Customer Profile | **Contradictory Customer Status Badges:** The profile header displays a `Registered` badge while the field below shows `Lead Status: New Lead`. | **Medium** | Sync state handlers so `Lead Status` reflects `Registered` / `Converted` once user registration completes. |
+| **BUG-57** | Admin Dashboard | **Metric & Chart Math Contradictions:** KPI stat cards show 10 total customers, while the Weekly Conversion Chart shows 120+ weekly conversions and the Package Breakdown chart sums to 70 subscribers. | **High** | Re-bind all dashboard chart components to the same centralized analytics aggregation API. |
+| **BUG-58** | Admin Dashboard / Customer Table | **Duplicate Row Rendering (Identical Primary Keys):** The Customers datatable renders identical duplicate rows with the exact same `Customer ID: 1` across all displayed entries. | **High** | Add a `DISTINCT customer_id` constraint or proper `GROUP BY` clause to the datatable fetch query. |
+| **BUG-59** | Admin Dashboard / Feed | **Hardcoded Recent Subscriptions Data:** The Recent Subscriptions widget renders 4 identical hardcoded entries for `Jane Smith` dated `10 Mar 26`. | **Medium** | Wire the Recent Subscriptions card to a real-time event audit stream (`GET /api/v1/admin/recent-subscriptions`). |
+| **BUG-60** | Admin Dashboard / Customer Table | **Unformatted Text Wrapping on Datatable Emails:** Email strings break unnaturally across multiple lines (`gmail.c` / `om`) due to fixed pixel column widths. | **Low** | Set `text-overflow: ellipsis; white-space: nowrap;` on datatable cell components with tooltip hover support. |
